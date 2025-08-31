@@ -1,0 +1,24 @@
+{
+  "id": "3b3f50a5-8e9f-4b42-9b2b-qa-public-v2",
+  "name": "Public Test APIs v2",
+  "values": [
+    {
+      "key": "echo",
+      "value": "https://postman-echo.com",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "httpbin",
+      "value": "https://httpbin.org",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "reqres",
+      "value": "https://reqres.in",
+      "type": "text",
+      "enabled": true
+    }
+  ]
+}

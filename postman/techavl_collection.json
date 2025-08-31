@@ -1,0 +1,181 @@
+{
+  "info": {
+    "name": "Public Test APIs (Echo + HTTPBin) v2",
+    "_postman_id": "f05e2f2e-a1fb-44c3-9a00-qa-public-v2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST Echo - Happy Path",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{echo}}/post",
+          "host": [
+            "{{echo}}"
+          ],
+          "path": [
+            "post"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"vehicleId\": \"123ABC\", \"lat\": 40.41, \"lng\": -3.7}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('200', ()=> pm.response.code===200);",
+              "pm.test('JSON', ()=> pm.response.headers.get('Content-Type').includes('application/json'));",
+              "pm.test('Tiempo < 1000ms', ()=> pm.response.responseTime < 1000);",
+              "const j=pm.response.json(); pm.expect(j).to.have.property('json'); pm.expect(j.json.vehicleId).to.eql('123ABC');"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "HTTPBin - 422 inválido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{httpbin}}/status/422",
+          "host": [
+            "{{httpbin}}"
+          ],
+          "path": [
+            "status",
+            "422"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"vehicleId\": \"BAD!\", \"lat\": 100.0, \"lng\": -200.0}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('422', ()=> pm.response.code===422);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "HTTPBin - delay 1s (SLO)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{httpbin}}/delay/1",
+          "host": [
+            "{{httpbin}}"
+          ],
+          "path": [
+            "delay",
+            "1"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('OK', ()=> pm.response.code===200);",
+              "pm.test('Tiempo < 2000ms', ()=> pm.response.responseTime < 2000);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "HTTPBin - UUID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{httpbin}}/uuid",
+          "host": [
+            "{{httpbin}}"
+          ],
+          "path": [
+            "uuid"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const j=pm.response.json(); pm.expect(j).to.have.property('uuid');"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ReqRes - Create User (ejemplo real)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{reqres}}/api/users",
+          "host": [
+            "{{reqres}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"morpheus\", \"job\": \"leader\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('201 Created', () => pm.response.code === 201);",
+              "pm.test('JSON', () => pm.response.headers.get('Content-Type').includes('application/json'));",
+              "const j = pm.response.json();",
+              "pm.expect(j).to.have.property('id');",
+              "pm.expect(j).to.have.property('createdAt');",
+              "pm.expect(j.name).to.eql('morpheus');"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

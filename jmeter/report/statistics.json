@@ -1,0 +1,50 @@
+{
+  "HTTPBin - GET /delay/1" : {
+    "transaction" : "HTTPBin - GET /delay/1",
+    "sampleCount" : 30,
+    "errorCount" : 17,
+    "errorPct" : 56.666668,
+    "meanResTime" : 2379.1,
+    "medianResTime" : 2023.5,
+    "minResTime" : 1344.0,
+    "maxResTime" : 5261.0,
+    "pct1ResTime" : 4572.200000000001,
+    "pct2ResTime" : 5169.15,
+    "pct3ResTime" : 5261.0,
+    "throughput" : 0.6582845105654664,
+    "receivedKBytesPerSec" : 0.33777795377745595,
+    "sentKBytesPerSec" : 0.07457129221249424
+  },
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 60,
+    "errorCount" : 47,
+    "errorPct" : 78.333336,
+    "meanResTime" : 1366.0666666666668,
+    "medianResTime" : 902.5,
+    "minResTime" : 249.0,
+    "maxResTime" : 5261.0,
+    "pct1ResTime" : 3007.7999999999993,
+    "pct2ResTime" : 4596.099999999998,
+    "pct3ResTime" : 5261.0,
+    "throughput" : 1.3079019073569482,
+    "receivedKBytesPerSec" : 1.3684434604904632,
+    "sentKBytesPerSec" : 0.20372104904632152
+  },
+  "ReqRes - POST /api/users (Create User)" : {
+    "transaction" : "ReqRes - POST /api/users (Create User)",
+    "sampleCount" : 30,
+    "errorCount" : 30,
+    "errorPct" : 100.0,
+    "meanResTime" : 353.0333333333333,
+    "medianResTime" : 347.0,
+    "minResTime" : 249.0,
+    "maxResTime" : 461.0,
+    "pct1ResTime" : 443.9,
+    "pct2ResTime" : 453.3,
+    "pct3ResTime" : 461.0,
+    "throughput" : 0.6883259911894274,
+    "receivedKBytesPerSec" : 1.0871831190918686,
+    "sentKBytesPerSec" : 0.1364552502064978
+  }
+}
