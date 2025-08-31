@@ -52,11 +52,11 @@ Fuente del caso y lineamientos generales:
 
     P2 (medio): resiliencia ante datos límite, UI secundaria (filtros, paginación histórico), métricas y logs.
 
-    ID	Funcionalidad crítica	                                Motivo	                                         Prioridad
-    F1	Visualizar ubicación en tiempo real en el mapa	        Es la propuesta de valor del producto y cara al usuario	P0
-    F2	API /api/location responde 200, JSON válido, p95<1s	    Punto de entrada de la telemetría; SLO de rendimiento	P0
-    F3	Almacenar datos GPS en Cassandra tras Kafka	            Garantiza reportes/consultas; evita pérdida de datos	P0
-    F4	Regla: alerta por exceso de velocidad	                Cumplimiento de negocio y seguridad	                    P1
+    ID	Funcionalidad crítica	                                Motivo	                                                    Prioridad
+    F1	Visualizar ubicación en tiempo real en el mapa	        Es la propuesta de valor del producto y cara al usuario    	P0
+    F2	API /api/location responde 200, JSON válido, p95<1s	    Punto de entrada de la telemetría; SLO de rendimiento	    P0
+    F3	Almacenar datos GPS en Cassandra tras Kafka	            Garantiza reportes/consultas; evita pérdida de datos	    P0
+    F4	Regla: alerta por exceso de velocidad	                Cumplimiento de negocio y seguridad	                        P1
 
 
 
@@ -158,11 +158,11 @@ Fuente del caso y lineamientos generales:
     Salida: suites verdes (≥95%), métricas de JMeter adjuntas, reporte de ejecución (HTML) y video 3–5 min.
 
 8) Matriz de trazabilidad (resumen)
-    Requisito	Caso(s)	Evidencia
-    Mapa muestra ubicación	MAP-001, MAP-002	screenshot Cypress
-    API responde y es rápida	API-001, PERF-001	Reporte Newman/JMeter
-    Persistencia de datos	DATA-001, DATA-002	Logs consumer + query Cassandra
-    Regla velocidad	BUS-001	Log de evento/flag en DB
+    Requisito	                Caso(s)	                Evidencia
+    Mapa muestra ubicación	    MAP-001, MAP-002	    screenshot Cypress
+    API responde y es rápida	API-001, PERF-001	    Reporte Newman/JMeter
+    Persistencia de datos	    DATA-001, DATA-002	    Logs consumer + query Cassandra
+    Regla velocidad	            BUS-001	                Log de evento/flag en DB
 
 9) Entregables (según solicitud)
 
